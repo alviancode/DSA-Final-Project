@@ -17,7 +17,7 @@ int main() {
 
     while (true) {
         cout << endl;
-        cout << "####################### WORD DICTIONARY #######################" << endl;
+        cout << "\n####################### WORD DICTIONARY #######################" << endl;
         for (int i = 0; i < 6; i++) {
             cout << (i + 1) << ". " << funcNames[i] << endl;
         }
