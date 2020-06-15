@@ -26,10 +26,10 @@ int main() {
         cin >> selectNumber;
         cin.ignore();
         switch (selectNumber) {
+
             case 1:
                 cout << "Enter new word: ";
                 getline(cin, word);
-
                 if (search(root, word)) {
                     cout << "Enter another word!" << endl;
                     break;
@@ -59,6 +59,7 @@ int main() {
                         break;
                     }
                 }
+
             case 3:
                 if (isEmpty(root) == 1) {
                     cout << "Dictionary is empty!";
@@ -95,18 +96,21 @@ int main() {
                         break;
                     }
                 }
+
             case 5:
                 view(root, str);
                 break;
+
             case 6:
                 cout << "See You Next Time!";
                 exit(0);
+
             default:
                 cout << "Input is not valid!";
                 break;
         }
     }
 
-    return 0;
+    //return 0;
 }
 
