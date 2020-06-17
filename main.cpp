@@ -16,6 +16,7 @@ int main() {
     TrieNode *root = getNode();
     char str[MAX_WORD_SIZE];
 
+    // Array of menu selection
     string funcNames[6] = {"Add word", "Remove word", "Search word", "Edit word", "View all words", "Quit"};
     int selectNumber;
 
@@ -31,6 +32,7 @@ int main() {
         cin.ignore();
         switch (selectNumber) {
 
+            // If user input number 1
             case 1:
                 cout << "Enter new word: ";
                 getline(cin, word);
@@ -49,6 +51,7 @@ int main() {
                     break;
                 }
 
+                // If user input number 2
             case 2:
                 if (isEmpty(root) == 1) {
                     cout << "Dictionary is empty!";
@@ -69,6 +72,7 @@ int main() {
                     }
                 }
 
+                // If user input number 3
             case 3:
                 if (isEmpty(root) == 1) {
                     cout << "Dictionary is empty!";
@@ -88,6 +92,7 @@ int main() {
                     }
                 }
 
+                // If user input number 4
             case 4:
                 if (isEmpty(root) == 1) {
                     cout << "Dictionary is empty!";
@@ -112,6 +117,7 @@ int main() {
                     }
                 }
 
+                // If user input number 5
             case 5:
                 if (isEmpty(root) == 1) {
                     cout << "\nDictionary is empty!";
@@ -124,10 +130,12 @@ int main() {
                     break;
                 }
 
+                // If user input number 6
             case 6:
                 cout << "See You Next Time!";
                 exit(0);
 
+                // If user input does not match any case
             default:
                 cout << "Input is not valid!";
                 sleep_for(seconds(1));
