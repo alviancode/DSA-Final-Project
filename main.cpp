@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
-#include "trie.h"
 #include <chrono>
 #include <thread>
+#include "trie.h"
 
 #define MAX_WORD_SIZE 100
 using namespace std;
