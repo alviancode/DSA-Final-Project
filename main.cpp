@@ -6,6 +6,7 @@
 using namespace std;
 
 string word, partOfSpeech, meaning;
+int Number;
 
 
 int main() {
