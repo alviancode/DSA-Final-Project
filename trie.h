@@ -7,6 +7,7 @@
 
 using namespace std;
 const int alphabetSize = 26;
+string printTemp;
 
 
 struct TrieNode {
@@ -21,14 +22,14 @@ struct TrieNode *getNode() {
     struct TrieNode *pNode = new TrieNode;
 
     pNode->isEndOfWord = false;
-    for (int i = 0; i < alphabetSize; i++){
+    for (int i = 0; i < alphabetSize; i++) {
         pNode->children[i] = nullptr;
     }
     return pNode;
 }
 
 
-void insert(struct TrieNode *root, string word, string partOfSpeech, string meaning) {
+void insert(struct TrieNode *root, const string &word, string partOfSpeech, string meaning) {
     struct TrieNode *pNode = root;
 
     for (char i : word) {
@@ -37,6 +38,18 @@ void insert(struct TrieNode *root, string word, string partOfSpeech, string mean
             pNode->children[index] = getNode();
         }
 
+        pNode = pNode->children[index];
+    }
+    pNode->isEndOfWord = true;
+    pNode->meaning = std::move(meaning);
+    pNode->partOfSpeech = std::move(partOfSpeech);
+}
+
+void edit(struct TrieNode *root, const string &word, string partOfSpeech, string meaning) {
+    struct TrieNode *pNode = root;
+
+    for (char i : word) {
+        int index = i - 'a';
         pNode = pNode->children[index];
     }
     pNode->isEndOfWord = true;
@@ -59,12 +72,12 @@ string getMeaning(struct TrieNode *root, const string &key) {
 }
 
 
-bool search(struct TrieNode *root, string key) {
+bool search(struct TrieNode *root, const string &key) {
     struct TrieNode *pNode = root;
 
     for (char i : key) {
         int index = i - 'a';
-        if (!pNode->children[index]){
+        if (!pNode->children[index]) {
             return false;
         }
         pNode = pNode->children[index];
@@ -108,12 +121,20 @@ TrieNode *remove(struct TrieNode *root, string key, int depth = 0) {
     return pNode;
 }
 
+void printWord(struct TrieNode *root, char *str, int n) {
+    struct TrieNode *pNode = root;
+    for (int i = 0; i < n; i++) {
+        printTemp += str[i];
+    }
+    cout << printTemp << '(' + pNode->partOfSpeech << ") = " << pNode->meaning << endl;
+    printTemp = "";
+}
 
 void view(struct TrieNode *root, char *str, int level = 0) {
     struct TrieNode *pNode = root;
 
     if (pNode->isEndOfWord) {
-        cout << str << '(' + pNode->partOfSpeech << ") = " << pNode->meaning << endl;
+        printWord(root, str, level);
     }
     for (int i = 0; i < alphabetSize; i++) {
         if (pNode->children[i]) {
