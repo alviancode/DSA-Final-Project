@@ -6,7 +6,6 @@
 using namespace std;
 
 string word, partOfSpeech, meaning;
-int Number;
 
 
 int main() {
@@ -99,8 +98,13 @@ int main() {
                 }
 
             case 5:
-                view(root, str);
-                break;
+                if(isEmpty(root) == 1){
+                    cout << "Dictionary is empty!";
+                    break;
+                } else{
+                    view(root, str);
+                    break;
+                }
 
             case 6:
                 cout << "See You Next Time!";
@@ -111,7 +115,6 @@ int main() {
                 break;
         }
     }
-
     return 0;
 }
 
